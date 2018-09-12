@@ -15,7 +15,7 @@ import (
 // tooBig provides a sanity check for sizes; used in several places.
 // Upper limit of 1GB, allowing room to grow a little without overflow.
 // TODO: make this adjustable?
-const tooBig = 1 << 30
+const tooBig = 1 << 31
 
 // A Decoder manages the receipt of type and data information read from the
 // remote side of a connection.
