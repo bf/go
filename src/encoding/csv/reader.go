@@ -298,14 +298,7 @@ parseField:
 			} else {
 				field = field[:len(field)-lengthNL(field)]
 			}
-			// Check to make sure a quote does not appear in field.
-			if !r.LazyQuotes {
-				if j := bytes.IndexByte(field, '"'); j >= 0 {
-					col := utf8.RuneCount(fullLine[:len(fullLine)-len(line[j:])])
-					err = &ParseError{StartLine: recLine, Line: r.numLine, Column: col, Err: ErrBareQuote}
-					break parseField
-				}
-			}
+			
 			r.recordBuffer = append(r.recordBuffer, field...)
 			r.fieldIndexes = append(r.fieldIndexes, len(r.recordBuffer))
 			if i >= 0 {
